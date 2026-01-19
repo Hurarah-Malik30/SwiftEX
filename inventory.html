@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory - SwiftEx</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <a href="dashboard.html" class="brand"><i class="fas fa-truck-fast"></i> SWIFTEX</a>
+        <ul class="nav-links">
+            <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="add_parcel.html"><i class="fas fa-plus-circle"></i> Add Parcel</a></li>
+            <li><a href="inventory.html" class="active"><i class="fas fa-boxes"></i> Inventory</a></li>
+            <li><a href="track_parcel.html"><i class="fas fa-search-location"></i> Track ID</a></li>
+            <li><a href="route_tracking.html"><i class="fas fa-map-marked-alt"></i> Live Map</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <h1>Inventory Management</h1>
+            <a href="add_parcel.html" class="btn"><i class="fas fa-plus"></i> Add New Parcel</a>
+        </div>
+
+        <div class="card" style="padding: 0; overflow: hidden; max-width: 100%;">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Code</th>
+                            <th>Sender</th>
+                            <th>Receiver</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventoryBody">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/parcel.js"></script>
+    <script>
+        window.onload = loadInventory;
+    </script>
+</body>
+
+</html>

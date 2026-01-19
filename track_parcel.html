@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Parcel - SwiftEx</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <a href="dashboard.html" class="brand"><i class="fas fa-truck-fast"></i> SWIFTEX</a>
+        <ul class="nav-links">
+            <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="add_parcel.html"><i class="fas fa-plus-circle"></i> Add Parcel</a></li>
+            <li><a href="inventory.html"><i class="fas fa-boxes"></i> Inventory</a></li>
+            <li><a href="track_parcel.html" class="active"><i class="fas fa-search-location"></i> Track ID</a></li>
+            <li><a href="route_tracking.html"><i class="fas fa-map-marked-alt"></i> Live Map</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <h1>Track Shipment</h1>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Real-time parcel status monitoring.</p>
+
+        <div class="card">
+            <div class="form-group" style="flex-direction: row; justify-content: start; gap:10px;">
+                <input type="text" id="trackingIdInput" placeholder="Enter Tracking ID (e.g., SW1001)" style="flex:1;">
+                <button class="btn" onclick="trackParcelUserAction()">Track</button>
+            </div>
+
+            <div id="resultBox" class="result-box"
+                style="margin-top:20px; border-top: 1px solid var(--border-color); padding-top: 20px; display:none;">
+                <div
+                    style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding: 10px 0;">
+                    <span style="color: var(--text-muted);">Tracking ID</span>
+                    <span id="displayId" style="font-weight: bold; color: var(--primary-color);">--</span>
+                </div>
+                <div
+                    style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding: 10px 0;">
+                    <span style="color: var(--text-muted);">From</span>
+                    <span id="displaySender">--</span>
+                </div>
+                <div
+                    style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding: 10px 0;">
+                    <span style="color: var(--text-muted);">To</span>
+                    <span id="displayReceiver">--</span>
+                </div>
+                <div
+                    style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding: 10px 0;">
+                    <span style="color: var(--text-muted);">Current Status</span>
+                    <span><span id="displayStatus" class="status-badge">--</span></span>
+                </div>
+                <div
+                    style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding: 10px 0;">
+                    <span style="color: var(--text-muted);">Est. Delivery</span>
+                    <span id="displayDate">--</span>
+                </div>
+            </div>
+
+            <p id="errorMsg" style="color: var(--danger); margin-top: 1rem; display: none;">Parcel not found. Please
+                check ID.</p>
+        </div>
+    </div>
+
+    <script src="../static/parcel.js"></script>
+    <script>
+        window.onload = initTrackingPage;
+    </script>
+</body>
+
+</html>

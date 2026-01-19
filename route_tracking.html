@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route Visualization - SwiftEx</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <a href="dashboard.html" class="brand"><i class="fas fa-truck-fast"></i> SWIFTEX</a>
+        <ul class="nav-links">
+            <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="add_parcel.html"><i class="fas fa-plus-circle"></i> Add Parcel</a></li>
+            <li><a href="inventory.html"><i class="fas fa-boxes"></i> Inventory</a></li>
+            <li><a href="track_parcel.html"><i class="fas fa-search-location"></i> Track ID</a></li>
+            <li><a href="route_tracking.html" class="active"><i class="fas fa-map-marked-alt"></i> Live Map</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <h1>Live Transit Map</h1>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Simulate deliveries between major logistics hubs.</p>
+
+        <div class="card" style="max-width: 100%;">
+            <!-- Mode Switcher -->
+            <div style="margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                <label style="margin-right: 15px; font-weight: 600; color:var(--text-main);">Simulation Mode:</label>
+                <input type="radio" name="mode" id="modeManual" value="manual" checked onchange="toggleMode()"> <label
+                    for="modeManual" style="margin-right: 15px; cursor:pointer;">Manual Selection</label>
+                <input type="radio" name="mode" id="modeID" value="id" onchange="toggleMode()"> <label for="modeID"
+                    style="cursor:pointer;">Track by ID</label>
+            </div>
+
+            <!-- Controls: Manual -->
+            <div id="manualControls" class="form-grid"
+                style="grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: end; margin-bottom: 1.5rem;">
+                <div class="form-group" style="margin-bottom: 0;">
+                    <label>Source City</label>
+                    <select id="startCity">
+                        <option value="Karachi">Karachi (South)</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Sukkur">Sukkur</option>
+                        <option value="Quetta">Quetta (West)</option>
+                        <option value="Multan">Multan</option>
+                        <option value="Lahore">Lahore</option>
+                        <option value="Islamabad">Islamabad (North)</option>
+                        <option value="Peshawar">Peshawar (North West)</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                    <label>Destination City</label>
+                    <select id="endCity">
+                        <option value="Islamabad">Islamabad (North)</option>
+                        <option value="Lahore">Lahore</option>
+                        <option value="Multan">Multan</option>
+                        <option value="Karachi">Karachi (South)</option>
+                        <option value="Peshawar">Peshawar</option>
+                    </select>
+                </div>
+                <div>
+                    <button class="btn" style="width: 100%;" onclick="startAdvancedSimulation()">Start Manual
+                        Sim</button>
+                </div>
+            </div>
+
+            <!-- Controls: By ID -->
+            <div id="idControls" class="form-grid"
+                style="grid-template-columns: 2fr 1fr; gap: 10px; align-items: end; margin-bottom: 1.5rem; display: none;">
+                <div class="form-group" style="margin-bottom: 0;">
+                    <label>Enter Parcel Tracking ID</label>
+                    <input type="text" id="trackIdInput" placeholder="e.g. SW1001">
+                </div>
+                <div>
+                    <button class="btn" style="width: 100%;" onclick="startIdSimulation()">Track & Simulate</button>
+                </div>
+            </div>
+
+            <p id="routeStatus" style="font-weight: 500; color: var(--primary-color); min-height: 24px;">Select route
+                and click start.</p>
+
+            <!-- Map Area -->
+            <div class="map-visual-container" id="mapContainer">
+                <svg class="map-svg-layer" id="mapSvg"></svg>
+                <div id="nodesLayer"></div>
+                <div id="parcelMarker" class="parcel-marker"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../static/parcel.js"></script>
+    <script src="../static/route.js"></script>
+</body>
+
+</html>

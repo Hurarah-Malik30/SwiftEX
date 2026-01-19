@@ -1,0 +1,4 @@
+1001,Multan,20,1,5,Zone A
+1002,Karachi,30,1,5,Zone C
+1003,Sakhar,10,1,5,Zone C
+1004,Peshawar,10,3,3,Zone B

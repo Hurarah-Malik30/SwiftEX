@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Parcel - SwiftEx</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <a href="dashboard.html" class="brand"><i class="fas fa-truck-fast"></i> SWIFTEX</a>
+        <ul class="nav-links">
+            <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="add_parcel.html" class="active"><i class="fas fa-plus-circle"></i> Add Parcel</a></li>
+            <li><a href="inventory.html"><i class="fas fa-boxes"></i> Inventory</a></li>
+            <li><a href="track_parcel.html"><i class="fas fa-search-location"></i> Track ID</a></li>
+            <li><a href="route_tracking.html"><i class="fas fa-map-marked-alt"></i> Live Map</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <h1>Register New Parcel</h1>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Enter shipment details below.</p>
+
+        <div class="card" style="max-width: 800px; margin: 0 auto;">
+            <form onsubmit="handleAddParcel(event)">
+                <div class="form-group">
+                    <label>Parcel ID Code</label>
+                    <input type="text" id="pId" placeholder="e.g. SW2022" required>
+                    <small style="color: var(--text-muted);">Must be unique.</small>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Sender City</label>
+                        <select id="pSender">
+                            <option>Karachi</option>
+                            <option>Lahore</option>
+                            <option>Islamabad</option>
+                            <option>Multan</option>
+                            <option>Peshawar</option>
+                            <option>Quetta</option>
+                            <option>Hyderabad</option>
+                            <option>Sukkur</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Receiver City</label>
+                        <select id="pReceiver">
+                            <option>Islamabad</option>
+                            <option>Lahore</option>
+                            <option>Karachi</option>
+                            <option>Multan</option>
+                            <option>Sukkur</option>
+                            <option>Hyderabad</option>
+                            <option>Peshawar</option>
+                            <option>Quetta</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Weight (kg)</label>
+                        <input type="number" id="pWeight" value="1" min="0.1" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Priority</label>
+                        <select id="pPriority">
+                            <option value="1">High Priority</option>
+                            <option value="2">Standard</option>
+                            <option value="3">Low Cost</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1.5rem; text-align: right;">
+                    <button type="button" class="btn btn-secondary" style="margin-right: 10px;"
+                        onclick="window.history.back()">Cancel</button>
+                    <button type="submit" class="btn">Register Shipment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../static/parcel.js"></script>
+</body>
+
+</html>
